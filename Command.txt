@@ -1,0 +1,375 @@
+# Autonomous Full-Stack Audit, Bug Fixing & Trucking Dispatch Platform Enhancement
+
+Act as a **Senior Full-Stack Engineer, QA Automation Engineer, UI/UX Engineer, Database Architect, and Trucking Dispatch Operations Owner**. Your task is to thoroughly audit, fix, test, and improve the existing trucking dispatch management application.
+
+Do not just provide recommendations or a report. Inspect the existing codebase, understand the architecture, implement the necessary fixes, and verify the complete application workflow.
+
+## 1. Fix the "Run Sync" Button and Automatic Data Synchronization
+
+The existing **Run Sync** button is not working correctly. Investigate and fix the actual root cause.
+
+Requirements:
+- Trace the complete flow from the frontend button to the backend API, synchronization service, database, and frontend refresh.
+- Fix incorrect event handlers, API endpoints, authentication, request payloads, async operations, database updates, or state-management issues as applicable.
+- When Run Sync is clicked, execute the actual synchronization process and update the relevant database records.
+- Automatically refresh the frontend after successful synchronization without requiring a manual page reload.
+- Display clear loading, progress, success, partial-success, and error states.
+- Prevent duplicate sync operations caused by repeated clicks.
+- Handle API timeouts, failed requests, missing data, rate limits, and network interruptions.
+- Record the last successful sync time, sync status, records processed, records added, updated records, skipped records, and errors.
+- Ensure retries do not create duplicate records.
+- Preserve existing records when an external source is temporarily unavailable.
+- If background synchronization is supported, verify its scheduling, execution, and status reporting.
+- Never display a successful sync message unless the backend confirms success.
+
+**Acceptance criteria:** Clicking Run Sync must trigger a real backend operation, persist the correct data, and refresh all affected frontend components automatically.
+
+## 2. Audit Frontend and Backend Data Consistency
+
+Currently, the backend contains important fields such as MC Number, but the frontend does not display the relevant information correctly.
+
+Audit every important entity and field across:
+- Database schema and migrations
+- Backend models and validation schemas
+- API endpoints and response payloads
+- Frontend types and interfaces
+- Data-fetching hooks and state management
+- Tables, detail pages, cards, filters, and search
+- Create, edit, view, and delete workflows
+
+Identify fields that exist in the backend but are missing, incorrectly mapped, hidden, or not rendered in the frontend.
+
+Fix the underlying issues instead of adding hardcoded or dummy values.
+
+For every important field, verify that:
+1. It exists in the correct database entity.
+2. It is returned by the appropriate API.
+3. It is mapped correctly in the frontend.
+4. It appears on the correct page.
+5. It remains accurate after creating, editing, syncing, or refreshing records.
+
+Use proper typing and validation. Do not silently convert missing values into misleading data.
+
+## 3. Implement a Professional Trucking Dispatch Data Structure
+
+Think like an actual trucking dispatch company owner. Determine which data fields and tables are essential for daily dispatch operations.
+
+Inspect the existing schema first. Reuse and extend existing structures where appropriate instead of creating redundant tables.
+
+### A. Carrier / Trucking Company Management
+
+Display relevant carrier information, including:
+
+- Company Name
+- Legal Business Name, if available
+- MC Number
+- USDOT Number
+- Carrier Status
+- Safety Rating, if available
+- Operating Authority Status
+- Insurance Status
+- Insurance Expiration Date
+- Contact Person
+- Phone Number
+- Email Address
+- Business Address
+- Equipment Types
+- Preferred Lanes or Operating Regions
+- Onboarding Status
+- Last Verified Date
+- Notes and Documents, where supported
+
+MC and USDOT information must be visible wherever it is operationally relevant, especially in carrier listings and carrier detail pages.
+
+Only show verified information when the source supports it. Distinguish unavailable, unverified, expired, and inactive information.
+
+### B. Driver Management
+
+Include the fields necessary for dispatch operations:
+
+- Driver Name
+- Phone Number
+- Associated Carrier
+- Driver Status
+- Assigned Truck
+- Assigned Trailer
+- License Information, where authorized and necessary
+- Availability
+- Current Location, when available and authorized
+- Hours-of-Service Status, when integrated
+- Documents and Expiration Dates, where applicable
+
+Protect sensitive driver information and enforce appropriate access controls.
+
+### C. Truck and Equipment Management
+
+Include:
+
+- Truck Number
+- VIN, where available and authorized
+- Truck Type
+- Make and Model, where available
+- Associated Carrier
+- Assigned Driver
+- Current Status
+- Current Location, if available
+- Trailer Number
+- Trailer Type
+- Availability and Maintenance Status
+
+### D. Load and Dispatch Management
+
+Include:
+
+- Load Number
+- Customer / Broker
+- Broker MC Number, where applicable and verified
+- Pickup Location
+- Delivery Location
+- Pickup Date and Appointment Time
+- Delivery Date and Appointment Time
+- Commodity
+- Weight
+- Equipment Requirement
+- Rate Confirmation / Load Documents
+- Gross Load Revenue
+- Carrier Pay
+- Estimated Dispatch Margin
+- Assigned Carrier
+- Assigned Driver
+- Assigned Truck and Trailer
+- Dispatch Status
+- Tracking Status
+- Check Calls and Milestones
+- Proof of Delivery
+- Invoice Status
+- Payment Status
+- Exception Notes
+
+Use appropriate data types, relationships, indexes, constraints, and status enums.
+
+### E. Broker and Customer Management
+
+Where relevant to the current application, include:
+
+- Company Name
+- Contact Details
+- MC Number, where applicable
+- Payment Terms
+- Credit or Payment Status, if supported by reliable data
+- Associated Loads
+- Rate History
+- Documents
+- Notes and Communication History
+
+### F. Financial and Operational Reporting
+
+Provide useful operational metrics when the underlying data is available:
+
+- Total Active Loads
+- Available Trucks
+- Active Carriers
+- Loads Delivered
+- Loads at Risk
+- Revenue
+- Carrier Pay
+- Gross Dispatch Margin
+- Outstanding Invoices
+- Overdue Payments
+- Carrier Insurance Expirations
+- Loads Missing Required Documents
+
+Calculate financial metrics using actual records and clearly defined formulas. Do not invent numbers or display misleading zero values when data has not loaded.
+
+**Important:** These are candidate fields, not a requirement to create every possible feature regardless of scope. Implement the fields and modules that fit the existing application and its actual business purpose.
+
+## 4. Match the Information Quality of Safer Web and Motive
+
+Study the existing interface and the available data sources. Use Safer Web and Motive as references for the depth, organization, and clarity of operational information, while preserving the application's existing visual identity.
+
+Reference websites:
+- https://safer.fmcsa.dot.gov/
+- https://gomotive.com/
+
+Do not copy their branding, proprietary assets, or exact website design. Instead, adopt a comparable level of useful information and a well-organized detail layout adapted to the existing theme.
+
+For carrier detail pages, organize available information into logical sections:
+
+1. Company Overview
+2. Operating Authority and Registration
+3. MC Number and USDOT Number
+4. Safety and Inspection Information
+5. Insurance and Expiration Dates
+6. Contact Information
+7. Equipment and Fleet
+8. Documents
+9. Loads and Dispatch History
+10. Verification History and Data Source
+
+For fleet and dispatch detail pages, provide the relevant operational information without mixing unrelated fields.
+
+If external integrations are already configured, inspect and repair them. If additional integrations are needed, identify the required API, credentials, permissions, and configuration.
+
+Do not scrape restricted systems or bypass authentication. Do not fabricate external verification results. If data is unavailable, clearly show "Not available" or "Not verified."
+
+## 5. Keep the Existing Theme and Improve Usability
+
+Preserve the application's current design system, colors, typography, spacing, navigation, and component style.
+
+Improve the information architecture without redesigning everything unnecessarily.
+
+Requirements:
+- Professional trucking SaaS interface
+- Readable data tables with sensible column widths
+- Search, filters, sorting, pagination, and useful empty states
+- Detailed record views with logical information sections
+- Consistent status badges
+- Responsive layouts
+- Clear loading, error, and success states
+- Working action menus, forms, modals, and navigation
+- Accessible controls and appropriate keyboard behavior
+- No overflowing tables, broken layouts, or overlapping elements
+
+Avoid displaying every database field in every table. Show only the fields relevant to that screen, and move additional information into detail pages or expandable sections.
+
+Prioritize operational clarity over decorative elements.
+
+## 6. Think Like a Trucking Dispatch Company Owner
+
+Review the application from the perspective of an owner managing daily dispatch operations.
+
+Determine which existing workflows are incomplete and which important capabilities are genuinely missing.
+
+Evaluate:
+- Carrier onboarding and verification
+- Load creation and assignment
+- Driver and equipment availability
+- Pickup and delivery scheduling
+- Load tracking and check calls
+- Late pickup or delivery alerts
+- Missing documents
+- Insurance and authority expiration warnings
+- Delivered-load reconciliation
+- Invoicing and payment tracking
+- Carrier performance and dispatch margins
+- Operational exceptions and activity history
+
+Implement the highest-priority missing capabilities that fit the existing architecture and scope. Reuse existing components and data wherever possible.
+
+Do not add unnecessary modules, fake integrations, duplicate records, or features that cannot work end to end.
+
+## 7. Autonomous QA and Complete Functional Testing
+
+Act as a senior QA engineer. Test the application systematically rather than assuming that the code works after implementation.
+
+### Frontend Testing
+- Every page loads correctly.
+- Every navigation link works.
+- Every button performs its intended action.
+- Run Sync works and updates the UI.
+- Forms validate required fields.
+- Create, edit, view, and delete operations work where supported.
+- Search, filtering, sorting, and pagination work.
+- Loading, empty, error, and success states render correctly.
+- Tables and detail pages show the correct backend data.
+- No broken components, console errors, or unintended layout regressions.
+
+### Backend Testing
+- API endpoints return the correct status codes and response structures.
+- Authentication and authorization are enforced.
+- Request validation rejects invalid data.
+- Database writes persist correctly.
+- Relationships and constraints work correctly.
+- Sync retries do not create duplicates.
+- External API failures are handled gracefully.
+- Sensitive information is not exposed to unauthorized users.
+- Errors are logged without leaking credentials or secrets.
+
+### Integration and Regression Testing
+- Test the complete frontend-to-backend-to-database flow.
+- Test records created before and after synchronization.
+- Verify that frontend data matches persisted database records.
+- Test empty datasets, malformed responses, missing fields, duplicate records, and failed external requests.
+- Test multiple rapid clicks on Run Sync.
+- Check whether existing functionality has broken because of the changes.
+
+Use the testing tools already available in the project, such as unit tests, integration tests, API tests, browser automation, and end-to-end tests.
+
+Create or update automated tests for critical workflows where practical.
+
+Do not claim that a test passed unless it was actually executed and its result was checked.
+
+## 8. Security, Reliability, and Code Quality
+
+Inspect for:
+- Hardcoded credentials or exposed secrets
+- Incorrect permissions
+- Unsafe database queries
+- Missing input validation
+- Unhandled asynchronous operations
+- Race conditions
+- Duplicate sync jobs
+- Incorrect API error handling
+- Missing database indexes
+- N+1 database queries
+- Timezone and date-format inconsistencies
+- Incorrect financial calculations
+- Unnecessary API requests
+- Memory leaks or repeated subscriptions
+
+Follow the existing framework's conventions. Avoid unnecessary rewrites and preserve backward compatibility where possible.
+
+Use safe database migrations and never delete production data simply to make tests pass.
+
+## 9. Required Execution Workflow
+
+Follow this sequence:
+
+**Phase 1 — Inspect**
+- Inspect the repository structure, frontend, backend, database schema, environment configuration, integrations, and existing tests.
+- Identify the root cause of Run Sync failure.
+- Trace why MC Number and other important fields are missing from the frontend.
+- Create a prioritized list of actual issues.
+
+**Phase 2 — Implement**
+- Fix the sync workflow.
+- Fix missing and incorrectly mapped fields.
+- Improve carrier, load, driver, equipment, and broker detail views where relevant.
+- Add only justified schema changes and necessary migrations.
+- Improve loading states, errors, validation, and UI consistency.
+
+**Phase 3 — Verify**
+- Run linting, type checks, builds, automated tests, and relevant API or database tests.
+- Start the application if the environment permits.
+- Exercise critical workflows end to end.
+- Fix any regressions discovered during testing.
+- Rerun failed tests after fixing the underlying issue.
+
+**Phase 4 — Final Audit**
+- Review the modified files and database changes.
+- Confirm that existing data has been preserved.
+- Verify that no fake records or placeholder success messages were introduced.
+- Document any external integration that could not be tested because credentials or access were unavailable.
+
+Do not stop after inspecting the code or writing a plan. Continue through implementation and verification for as long as the available environment and permissions allow.
+
+Do not ask for approval for routine, reversible code fixes. Ask only when a destructive operation, external cost, production-impacting action, or missing business decision genuinely requires authorization.
+
+## 10. Final Deliverables
+
+At completion, provide a concise but complete report containing:
+
+1. Root causes identified.
+2. Bugs fixed.
+3. Files and components modified.
+4. Database migrations or schema changes made.
+5. Run Sync behavior before and after the fix.
+6. Missing fields restored to the frontend.
+7. Dispatch-owner features implemented.
+8. Tests executed and their actual results.
+9. Known issues and unverified integrations.
+10. Any remaining actions requiring credentials, permissions, or human approval.
+
+**Definition of done:** The application must work end to end, the Run Sync button must execute a real synchronization process, important backend fields must appear in the correct frontend views, dispatch information must be relevant and accurate, and critical workflows must be tested without introducing regressions.
+
+Begin by inspecting the existing codebase, then execute the work systematically. Do not merely describe what should be done.

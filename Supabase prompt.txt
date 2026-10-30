@@ -1,0 +1,198 @@
+## 20. Supabase Configuration and SQL Database Setup — Mandatory
+
+Use **Supabase PostgreSQL** as the primary database for this project.
+
+I will provide the Supabase project configuration values when needed. Your responsibility is to configure the backend correctly and generate the complete SQL schema that I can execute manually in the Supabase SQL Editor.
+
+### A. Ask me for the required Supabase configuration
+
+First, inspect the current project and determine which configuration values are actually needed.
+
+Ask me for the appropriate values, such as:
+
+- Supabase Project URL.
+- Supabase publishable key, if the frontend requires Supabase client access.
+- Supabase secret key only if a specific, justified server-side integration requires it.
+- Database connection string only if direct PostgreSQL access is required for SQLAlchemy or Alembic.
+
+Prefer connecting the Python backend to PostgreSQL using SQLAlchemy and a secure database connection string. Use the Supabase URL and keys only for the integrations that require them.
+
+Security requirements:
+- Never request my database password in a public chat or commit it to the repository.
+- Do not put secret keys or database connection strings in frontend environment variables.
+- Use backend environment variables or a secure secrets manager for confidential values.
+- Create `.env.example` with placeholder values only.
+- Ensure `.env` is listed in `.gitignore`.
+- Never print secret values in logs, terminal summaries, or generated documentation.
+- Do not assume that a publishable key is equivalent to a database connection string.
+- Do not use a privileged secret/service-role key in the browser.
+- If any credential is accidentally exposed, tell me to rotate it.
+
+If the environment does not support secure credential entry, create the configuration files with placeholders and show me exactly where to enter the values locally.
+
+### B. Generate a complete Supabase SQL migration
+
+Create a file at:
+
+`backend/migrations/manual/001_initial_schema.sql`
+
+This must be a complete, executable PostgreSQL SQL script that I can copy into the Supabase Dashboard → SQL Editor and execute.
+
+The SQL must create all tables, constraints, foreign keys, indexes, and required database functions or triggers for the initial MVP.
+
+Include at least these tables:
+
+1. `profiles` or an appropriate user-profile table linked to Supabase Auth.
+2. `job_profiles`
+3. `regions`
+4. `countries`
+5. `region_resumes`
+6. `resumes`
+7. `job_profile_regions`
+8. `job_sources`
+9. `jobs`
+10. `job_contacts`
+11. `job_matches`
+12. `applications`
+13. `email_logs`
+14. `application_events`
+15. `daily_quotas`
+16. `agent_runs`
+17. `user_integrations`
+
+Adapt the schema to the actual implementation. Do not create duplicate tables or conflicting user identity systems.
+
+### C. Supabase-specific requirements
+
+- Use `uuid` primary keys and `gen_random_uuid()` where appropriate.
+- Use `timestamptz` for timestamps.
+- Use foreign keys, unique constraints, check constraints, and indexes.
+- Add `created_at` and `updated_at` where appropriate.
+- Create an `updated_at` trigger if the application relies on automatic update timestamps.
+- Ensure that the database supports the regional resume mapping and the global daily application limit of 30.
+- Enforce uniqueness for canonical job identity and duplicate applications.
+- Store flexible source metadata in `jsonb`.
+- Store resume storage keys and metadata in PostgreSQL, not the PDF contents.
+- Never store plaintext passwords or OAuth tokens in ordinary database columns.
+- Make the SQL idempotent where practical, but do not silently overwrite existing application data.
+- Do not drop or recreate existing tables without checking the current schema and explaining the impact.
+
+### D. Seed the initial region and country configuration
+
+Include SQL seed statements for these four regions:
+
+- `PK` — Pakistan, priority 1.
+- `EU` — Europe, priority 2.
+- `ASIA` — Asia, priority 3.
+- `ARAB` — Arab countries, priority 4.
+
+Seed these countries:
+
+Pakistan:
+- Pakistan — `PK`
+
+Europe:
+- Germany — `DE`
+- Netherlands — `NL`
+- Ireland — `IE`
+- United Kingdom — `GB`
+- Sweden — `SE`
+- France — `FR`
+- Poland — `PL`
+- Portugal — `PT`
+- Switzerland — `CH`
+
+Asia:
+- Singapore — `SG`
+- Malaysia — `MY`
+- Japan — `JP`
+- South Korea — `KR`
+- Indonesia — `ID`
+- Thailand — `TH`
+- China — `CN`
+
+Arab countries:
+- United Arab Emirates — `AE`
+- Saudi Arabia — `SA`
+- Qatar — `QA`
+- Oman — `OM`
+- Bahrain — `BH`
+- Kuwait — `KW`
+- Jordan — `JO`
+- Egypt — `EG`
+
+Design seed statements to avoid duplicate rows if they are safely rerun. Use the correct user ownership model for a personal application. Do not invent an authenticated Supabase user UUID; explain whether seed data should be inserted after the first user signs up or managed through an appropriate setup procedure.
+
+### E. Row-Level Security (RLS)
+
+Review the ownership model before enabling policies.
+
+For every user-owned table:
+- Enable RLS where the browser-facing Supabase client can access it.
+- Create policies that restrict users to their own records.
+- Ensure that one user cannot read or modify another user's resumes, job profiles, contacts, application history, or integrations.
+- Use `auth.uid()` for ownership checks when using Supabase Auth.
+- Never create a policy that permits all anonymous users to read private data.
+- Keep backend-only operations on the server and use appropriately restricted credentials.
+- Never expose recruiter contact records or user data publicly unless explicitly intended.
+
+If the application uses only a trusted FastAPI backend for database access, explain the selected access model and how database privileges and user authorization will be enforced. Do not enable RLS blindly without making sure the backend can still perform the required operations.
+
+### F. Resume storage
+
+If using Supabase Storage:
+- Create a private bucket called `regional-resumes`.
+- Store files under user-specific paths, such as `USER_UUID/REGION/filename.pdf`.
+- Add Storage policies so users can access only their own files.
+- Do not create public resume URLs.
+- Store only the bucket name, object path, file metadata, checksum, and version in the database.
+
+If bucket creation or policies require separate SQL or Dashboard steps, give me those steps explicitly.
+
+### G. SQL execution instructions
+
+After generating the schema, provide:
+
+1. The full SQL script in `backend/migrations/manual/001_initial_schema.sql`.
+2. A concise explanation of what the script creates.
+3. Exact steps to open the Supabase SQL Editor and execute it.
+4. Any prerequisites, especially Supabase Auth setup.
+5. Any additional SQL needed for Storage buckets and access policies.
+6. Verification queries that I can execute after the migration.
+7. Expected verification results, including the four regions and 25 countries.
+8. A rollback plan that does not accidentally delete existing user data.
+9. A clear list of anything that must be configured in the Supabase Dashboard rather than SQL.
+
+Example verification queries should include table existence, region counts, country counts, and important indexes or policies.
+
+### H. Keep migrations synchronized
+
+Use Alembic for the Python application's schema versioning.
+
+However, because I may manually execute the initial schema through the Supabase SQL Editor:
+
+- Generate the initial SQL from the same schema design used by SQLAlchemy models.
+- Keep the SQL migration and SQLAlchemy models synchronized.
+- Explain how to baseline or reconcile Alembic after the manual SQL script has been executed.
+- Do not blindly run `alembic upgrade head` against an already-created schema without checking the migration state.
+- Clearly distinguish the one-time manual SQL setup from subsequent schema migrations.
+
+### I. Expected deliverables
+
+Create and maintain these files:
+
+- `backend/migrations/manual/001_initial_schema.sql`
+- `backend/migrations/README.md`
+- `backend/app/db/models.py`
+- `backend/app/db/session.py`
+- `backend/app/core/config.py`
+- `.env.example`
+- `.gitignore`
+- `docs/supabase-setup.md`
+- `docs/database-verification.sql`
+
+Add tests or validation scripts where possible.
+
+Do not claim that the database is configured until the migration has actually been executed and verified. If you cannot connect to my Supabase project, generate the SQL, explain how I can run it, and wait for me to share the non-secret verification output before claiming success.
+
+**Start by checking the repository and asking me only for the Supabase configuration values that are genuinely required. Then implement the schema and provide the exact SQL script for manual execution.**

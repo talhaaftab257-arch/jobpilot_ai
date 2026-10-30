@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "JobPilot AI",
+    "slug": "jobpilot-ai",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#171717"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jobpilot.ai"
+    },
+    "android": {
+      "package": "com.jobpilot.ai",
+      "adaptiveIcon": {
+        "backgroundColor": "#641E32"
+      },
+      "usesCleartextTraffic": true
+    },
+    "web": {
+      "bundler": "metro"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0bb94954-cbc3-4670-b96d-3e1e2bad9fc3"
+      }
+    },
+    "owner": "talhaalam22"
+  }
+}

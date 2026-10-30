@@ -1,0 +1,84 @@
+# Exact UI Recreation Prompt — JobPilot AI
+
+Act as a senior UI/UX designer and frontend engineer. Recreate the provided JobPilot AI reference design as faithfully as possible. Treat the reference image as the visual source of truth. Do not redesign it, simplify it, or introduce a different visual style.
+
+## 1. Reference matching requirements
+
+Reproduce the reference image's:
+- Exact overall layout and content hierarchy.
+- Black left sidebar with the JobPilot AI logo, user profile, navigation icons, active maroon menu item, and bottom promotional card.
+- White/light-grey main workspace.
+- Maroon primary buttons, active tabs, progress bars, badges and highlights.
+- Card sizes, relative positions, spacing, corner radii, borders, shadows and typography.
+- Top navigation with global search, notifications and profile controls.
+- Clean, premium, spacious SaaS appearance.
+- Consistent icon style and alignment.
+
+Use the supplied reference image directly as a visual reference. Match its proportions and visual details as closely as the tool allows. Do not invent a new theme or add unnecessary gradients, illustrations, animations or decorative elements.
+
+## 2. Exact color palette
+
+- Primary maroon: #641E32
+- Secondary maroon: #87364F
+- Deep burgundy: #431321
+- Sidebar black: #171717
+- Main background: #F6F3F4
+- Card background: #FFFFFF
+- Main text: #202020
+- Secondary text: #737373
+- Borders: #E7E0E3
+- Soft maroon surface: #F5E9ED
+- Success: #16845B
+- Warning: #B7791F
+- Error: #C53030
+
+Use Inter typography. Match the reference's text scale, weights and line spacing.
+
+## 3. Build 12 separate screens
+
+Create 12 independent, editable design frames/pages. Do not combine them into one collage or a single oversized canvas.
+
+01. Dashboard — welcome heading, quick actions, automation status, My Tasks, Job Search Projects, My Goals, Application Calendar and Recent Activity.
+
+02. Job Search & Discovery — search bar, country and region filters, job type, experience, salary, posted-within filters, job listing cards and AI match scores.
+
+03. Job Details — job banner, role title, company, location, description, requirements, match analysis, missing skills, Save and Apply actions.
+
+04. Applications — application table, company, role, location, status, match score, application date, filters and table/board toggle.
+
+05. Resume Library — four regional CV cards for Pakistan, Europe, Asia and Arab Region, with Preview, Replace, Remove and Upload Resume controls.
+
+06. AI Assistant — chat panel, conversation history, suggested AI actions, job recommendations and CV improvement suggestions.
+
+07. Calendar — monthly calendar, interviews, follow-ups, deadlines, reminders and upcoming events.
+
+08. Email Templates — template sidebar, subject field, email editor, personalization variables, preview and Save Template action.
+
+09. Integrations — Gmail, Supabase and supported job-source integration cards with connection status and Connect/Manage actions.
+
+10. Analytics — summary metrics, jobs discovered, match rate, applications, status distribution, performance charts and regional breakdown.
+
+11. Settings — profile, job preferences, target countries, job titles, salary range, match threshold, timezone, notifications and automation preferences.
+
+12. Automation Center — automation status, scheduled searches, run history, queued actions, errors, pause/resume controls and daily quota.
+
+## 4. Frame and component rules
+
+- Desktop frame: 1440 × 1000 px.
+- Keep the same sidebar width and top-header height across all 12 screens.
+- Use a consistent 8 px spacing system.
+- Use Auto Layout and reusable components.
+- Keep card padding, typography, icon sizes, button heights and border radii consistent.
+- Reuse the same sidebar, header, buttons, badges, filters, cards, tables and modal styles.
+- Use the same active navigation and hover states throughout the design.
+- Use realistic sample content while keeping all screens visually consistent with the reference.
+
+## 5. Functional prototype
+
+Connect the frames using prototype navigation. Sidebar items must open the corresponding screens. Job cards must open Job Details. Application filters and status controls should demonstrate visible state changes. Buttons should have appropriate prototype interactions.
+
+## 6. Strict instructions
+
+The reference image is the authority. Visual fidelity is more important than adding new creative ideas. Match the layout first, then refine typography, colors, spacing and components. Do not merge the 12 screens into a collage. Do not create 12 unrelated designs. All 12 screens must look like one coherent product.
+
+Deliver an editable Figma design with 12 individually named frames, reusable components, design tokens and prototype connections.

@@ -1,0 +1,194 @@
+# Role: Senior SaaS Product Designer + Senior Frontend Engineer
+
+Act as a senior Figma-level UI/UX designer, SaaS product designer, design systems specialist, and senior React frontend engineer.
+
+## Project
+Build a premium, production-quality frontend for my AI Job Hunting Agent SaaS. The application discovers relevant jobs, evaluates CV-to-job matches, manages regional resumes, generates application emails, automates approved applications, and tracks progress.
+
+Do not create a generic admin dashboard or a basic template. Design a polished commercial SaaS product that could realistically be launched as a paid subscription service.
+
+## 1. First inspect the existing repository
+- Inspect the current project structure, framework, dependencies, routes, components, API integration, and existing design.
+- Reuse working code where appropriate.
+- Preserve existing backend functionality and API contracts.
+- If the frontend uses React, Vite, and TypeScript, continue with that stack.
+- Do not replace the project architecture without a clear technical reason.
+- Create and implement the actual frontend files, not just a plan or mockup.
+
+## 2. Visual design direction
+Create an original visual identity inspired by the quality and usability of Linear, Vercel, and leading modern AI SaaS products. Do not copy their interfaces exactly.
+
+Design characteristics:
+- Premium, clean, modern, sophisticated and trustworthy.
+- Excellent spacing, typography, alignment, and visual hierarchy.
+- Refined neutral backgrounds, subtle borders, restrained shadows, and a consistent accent color.
+- Use a polished light theme as the initial default, with optional dark mode if practical.
+- Choose a professional font such as Inter or an equivalent already available in the project.
+- Use Lucide icons consistently.
+- Use charts, tables, progress indicators, status badges, skeleton loaders, empty states, tooltips, and tasteful transitions where they add value.
+- Avoid excessive gradients, oversized cards, unnecessary glassmorphism, emoji icons, and excessive whitespace.
+- Make the interface feel like a real, carefully designed SaaS product, not an AI-generated template.
+
+## 3. Application layout
+Build a consistent application shell with:
+- Collapsible left sidebar.
+- Product logo and name: JobPilot AI.
+- Main content area with page title, breadcrumbs where useful, and contextual actions.
+- Top navigation with global search, notifications, theme control, and user profile.
+- Responsive mobile navigation.
+- Consistent page containers, grids, spacing, buttons, forms, and card styles.
+
+Sidebar navigation:
+1. Overview
+2. Discover Jobs
+3. Matched Jobs
+4. Applications
+5. Email Templates
+6. Resume Library
+7. Analytics
+8. Integrations
+9. Settings
+
+Add a clear global pause/resume control for automation. Display a visible status indicating whether the agent is running, paused, or in an error state.
+
+## 4. Overview dashboard
+Design a polished dashboard with:
+- Welcome header and current agent status.
+- KPI cards: jobs discovered, qualified matches, applications sent, response rate.
+- Daily application quota: 0/30 initially when no real data exists.
+- Application activity chart.
+- Job discovery by region.
+- Recent job matches.
+- Recent application activity.
+- Agent execution history and errors.
+- Quick actions: Run Discovery, Review Matches, Manage Resumes, Edit Email Template.
+
+All metrics must come from backend data when available. If the backend is not connected, use clearly labeled demo data and never present it as real activity.
+
+## 5. Discover Jobs page
+Build a professional job discovery interface featuring:
+- Search by title, company, skills, and keyword.
+- Filters for region, country, match score, publication date, experience, and remote/on-site/hybrid work.
+- Default freshness filter: posted within the last 72 hours.
+- Sort by relevance, newest, and match score.
+- Job cards or a polished data table, with an option to switch views.
+- Company, job title, location, publication date, source, salary when available, and match score.
+- Job details panel with job description, required skills, matching skills, missing skills, source link, and selected regional resume.
+- Actions: Save, Ignore, View Original Job, Generate Email, and Prepare Application.
+
+Do not fabricate job listings, salary figures, company details, or publication dates. Label demo content clearly.
+
+## 6. Regional job preferences
+Show the user's search priority clearly:
+1. Pakistan
+2. Europe: Germany, Netherlands, Ireland, United Kingdom, Sweden, France, Poland, Portugal, Switzerland
+3. Asia: Singapore, Malaysia, Japan, South Korea, Indonesia, Thailand, China
+4. Arab countries: UAE, Saudi Arabia, Qatar, Oman, Bahrain, Kuwait, Jordan, Egypt
+
+Allow users to manage enabled countries and priorities through Settings.
+
+The application must use one global maximum of 30 applications per day across all regions, not 30 per region.
+
+## 7. Applications page
+Create an application management center with:
+- Table or board views.
+- Statuses: Discovered, Matched, Ready for Review, Queued, Sending, Sent, Submitted, Replied, Interview, Rejected, Failed, and Needs Attention.
+- Filters by date, region, company, and status.
+- Application timeline and event history.
+- Email preview and original job link.
+- Retry failed actions where safe.
+- Clear indicators for manual action required.
+- Export functionality if practical.
+
+Keep email applications separate from website/portal applications. Never claim a portal application was submitted when it was not.
+
+## 8. Email Templates page
+Create an email template editor with:
+- Editable subject and message body.
+- Available variables such as candidate name, company, job title, relevant skills, and job URL.
+- Live preview.
+- Regional template selection.
+- Test rendering.
+- Save and reset actions.
+
+The email must only use verified information from the user's approved profile and regional resume. Never invent qualifications or hiring contacts.
+
+## 9. Resume Library page
+Build four separate regional resume cards:
+- Pakistan CV
+- Europe CV
+- Asia CV
+- Arab-region CV
+
+Each card should show upload status, filename, upload date, and actions to upload, preview, replace, or remove a resume.
+
+Show a warning when a regional CV is missing. Never silently substitute a different region's CV.
+
+Use private Supabase Storage. Do not expose public resume URLs.
+
+## 10. Integrations page
+Create polished integration cards for:
+- Gmail
+- Supabase
+- Approved job data sources
+- Optional AI model provider
+
+Show Connected, Not Connected, Needs Attention, or Configuration Required based on real integration state.
+
+Include appropriate connection and disconnect actions. Never display secrets, access tokens, or private credentials.
+
+## 11. Settings page
+Include:
+- Job titles and skills.
+- Country and region priorities.
+- Job freshness: 72 hours.
+- Minimum match score: 75/100.
+- Global daily application limit: 30.
+- Time zone: Asia/Karachi.
+- Email automation mode.
+- Resume-to-region mapping.
+- Notifications.
+- Privacy and security.
+- Dry-run mode.
+- Global emergency pause.
+
+Make settings editable with proper validation and save feedback.
+
+## 12. Interaction and frontend engineering
+- Use reusable, typed React components.
+- Use the existing router or React Router if routing is not yet configured.
+- Use the existing styling system; if absent, use Tailwind CSS or a coherent CSS design system.
+- Create design tokens for color, typography, spacing, radius, shadows, and transitions.
+- Use React Hook Form and Zod if suitable and not already installed.
+- Use accessible dialogs, dropdowns, forms, keyboard navigation, and focus states.
+- Add loading, success, error, empty, and offline states.
+- Implement working filters, sorting, navigation, forms, modals, and view toggles.
+- Ensure the layout works on mobile, tablet, laptop, and desktop.
+- Avoid giant components, duplicated UI code, broken buttons, fake interactions, and unnecessary dependencies.
+- Connect to existing FastAPI endpoints when available.
+- Keep API calls in a dedicated service layer and use environment variables for configuration.
+- If endpoints are not ready, use a typed mock-data layer that can later be replaced cleanly.
+- Do not expose Supabase service-role keys or backend secrets in frontend code.
+
+## 13. Design quality acceptance criteria
+Before finishing:
+- Review every page for visual consistency.
+- Verify spacing, typography, alignment, colors, and responsive behavior.
+- Check that tables remain usable on small screens.
+- Check empty and error states.
+- Verify every visible button has a meaningful action.
+- Test all routes and fix console errors.
+- Run the existing lint, type-check, build, and tests where available.
+- Do not claim that an integration works unless it has been tested.
+
+## 14. Deliverables
+Implement the actual working frontend and provide:
+1. A short summary of the implemented design.
+2. The pages and reusable components created.
+3. Files changed or added.
+4. Commands to run the application locally.
+5. Environment variables required, with placeholders only.
+6. Build and test results.
+7. Any backend endpoints or integrations still missing.
+
+Start by inspecting the repository, then implement the frontend in manageable stages. Prioritize a visually excellent Overview dashboard and Discover Jobs page, then complete the remaining pages. Do not stop after producing a plan or design description.

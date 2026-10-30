@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+/* Remap Tailwind text-* utilities to Figma Inter scale so leftover classes still match */
+@theme {
+  --text-xs: 12px;
+  --text-xs--line-height: 18px;
+  --text-sm: 14px;
+  --text-sm--line-height: 22px;
+  --text-base: 14px;
+  --text-base--line-height: 22px;
+  --text-lg: 18px;
+  --text-lg--line-height: 26px;
+  --text-xl: 18px;
+  --text-xl--line-height: 26px;
+  --text-2xl: 24px;
+  --text-2xl--line-height: 32px;
+  --text-3xl: 32px;
+  --text-3xl--line-height: 40px;
+  --text-4xl: 32px;
+  --text-4xl--line-height: 40px;
+  --font-weight-extrabold: 700;
+  --font-weight-black: 700;
+}
+
+@layer base {
+  :root {
+    /* ── JobPilot AI Exact Design System Palette ──────────────── */
+    --color-primary-maroon: #641E32;
+    --color-secondary-maroon: #87364F;
+    --color-deep-burgundy: #431321;
+    --color-sidebar-black: #171717;
+    --color-main-bg: #F6F3F4;
+    --color-card-bg: #FFFFFF;
+    --color-main-text: #202020;
+    --color-secondary-text: #737373;
+    --color-border: #E7E0E3;
+    --color-subtle-maroon: #F5E9ED;
+    --color-status-success: #16845B;
+    --color-status-warning: #B7791F;
+    --color-status-error: #C53030;
+    --color-status-info: #2563EB;
+
+    /* ── Precision SaaS Typography Scale (Inter) ──────────────── */
+    /* H1: 32/40 Bold (Headline) */
+    --font-size-h1: 32px;
+    --line-height-h1: 40px;
+
+    /* H2: 24/32 Semibold (Section Title) */
+    --font-size-h2: 24px;
+    --line-height-h2: 32px;
+
+    /* H3: 18/26 Semibold (Card Title) */
+    --font-size-h3: 18px;
+    --line-height-h3: 26px;
+
+    /* Body: 14/22 Regular (Body Text) */
+    --font-size-body: 14px;
+    --line-height-body: 22px;
+
+    /* Small: 12/18 Regular (Secondary Text) */
+    --font-size-small: 12px;
+    --line-height-small: 18px;
+
+    /* Caption: 11/16 Regular (Labels / Metadata) */
+    --font-size-caption: 11px;
+    --line-height-caption: 16px;
+  }
+
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+    background-color: #F6F3F4;
+    color: #202020;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Exact Headings Mapping */
+  h1 {
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+
+  h3 {
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  code, kbd, samp, pre, .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-feature-settings: "liga" on, "calt" on, "zero" on;
+  }
+}
+
+/* ── Typography Utility Tokens ────────────────────────────────────── */
+.type-h1 {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.type-h2 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.type-h3 {
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.type-body {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+.type-small {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+.type-caption {
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 400;
+}
+
+/* Tabular figures for numbers, currency, percentages */
+.font-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Subtle modern card elevation */
+.saas-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E7E0E3;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.saas-card:hover {
+  border-color: #641E32;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E7E0E3;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #641E32;
+}

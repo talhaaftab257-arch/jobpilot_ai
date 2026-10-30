@@ -1,0 +1,144 @@
+# JobPilot AI — Premium Global Job Hunting SaaS
+
+## Role
+Act as a senior product designer, UX architect and design systems specialist. Design a polished, high-fidelity, production-oriented SaaS application called JobPilot AI. The product helps users discover global jobs, match jobs to their CVs, manage applications and automate safe job-search workflows.
+
+## Design direction
+- Style: premium, clean, professional, spacious, modern B2B SaaS.
+- Palette: maroon #641E32, deep burgundy #431321, black #171717, white #FFFFFF, background #F6F3F4, border #E7E0E3, secondary text #737373, subtle maroon #F5E9ED.
+- Typography: Inter.
+- Avoid excessive gradients, glassmorphism, oversized decorative elements, crowded cards and bright purple.
+- Use maroon for primary CTAs, active navigation, selected filters and important progress indicators.
+- Use black for the sidebar, headings and strong contrast.
+- Use white cards on a warm, very light neutral background.
+- Use green, amber and red only for semantic status indicators.
+- Make the product feel trustworthy, refined and easy to use for long work sessions.
+
+## Canvas and layout
+Create a desktop-first design at 1440 px wide. Use an 8 px spacing system, consistent Auto Layout, reusable components and responsive constraints. Use a fixed dark left sidebar approximately 240 px wide, a top header and a flexible content area. Use consistent card padding of 20–24 px, 12–16 px corner radii and subtle borders. Keep typography, alignment and spacing consistent across every screen.
+
+## Create these 12 screens
+
+1. Dashboard
+- Welcome header and global search.
+- Quick actions: Run Job Search, Review Matches, Manage Applications.
+- Automation status with pause/resume control.
+- Tasks, job-search projects, application calendar, goals, recent activity and summary metrics.
+- Use realistic sample content without implying that sample metrics are live data.
+
+2. Discover Jobs
+- Search by title, skill, company and keyword.
+- Filters for country, city, remote/hybrid/on-site, experience, job type, salary, industry and posting age.
+- Region tabs: Pakistan, Europe, Asia, Arab region, North America, Australia and Other.
+- Sort by newest, relevance and match score.
+- Job cards show title, company, location, posted age, employment type and AI match score.
+- Include loading, no-results and error states.
+
+3. Job Details and Match Analysis
+- Job title, company, location, source and external listing link.
+- Job description, responsibilities, required skills and employment details.
+- Visual match score with transparent criteria: skills, experience, location, seniority and CV relevance.
+- Missing skills and suggested CV improvements.
+- Save Job, Mark Applied and Apply Externally actions.
+- Never imply a successful application unless confirmed.
+
+4. Applications
+- Table view and kanban board.
+- Columns for role, company, region, status, match score, date and next action.
+- Statuses: Saved, Ready, Applied, Interview, Assessment, Offer, Rejected and Follow-up.
+- Search, filters, pagination and detail drawer.
+- Support manual status updates and reminders.
+
+5. Resume Library
+- Four separate regional resume slots: Pakistan, Europe, Asia and Arab region.
+- Upload, preview, replace, rename and remove controls.
+- Show filename, upload date, file type and assigned region.
+- Allow additional regions and custom resume assignments.
+- Never silently use another region's resume when the required resume is missing.
+
+6. AI Career Assistant
+- Chat layout with conversation history.
+- Suggested actions for CV review, job comparison, cover letter drafting and interview preparation.
+- Display source-backed job information where available.
+- Make clear when a response is AI-generated or information is unavailable.
+- Include empty, loading and failure states.
+
+7. Calendar and Follow-ups
+- Monthly calendar and agenda view.
+- Interviews, deadlines, follow-ups and reminders.
+- Create, edit, complete and reschedule reminders.
+- Use accessible status labels and clear date/time formatting.
+
+8. Email Templates
+- Template list for application emails, recruiter follow-ups, thank-you notes and other editable messages.
+- Editor with subject, body and supported personalization variables.
+- Preview before sending.
+- Show recipient, sending mode and delivery status where available.
+- Sending must require an authorized, connected email account.
+
+9. Integrations
+- Cards for Gmail OAuth, Supabase and available job-source integrations.
+- Clearly distinguish Connected, Disconnected, Needs Attention and Syncing.
+- Provide Connect, Reconnect, Disconnect and Test Connection actions where supported.
+- Never expose tokens, API keys or credentials.
+
+10. Analytics
+- Jobs discovered, qualified matches, applications, interviews, response rate and follow-ups.
+- Charts for application status, match-score distribution, activity over time and region breakdown.
+- Date-range selector and clear definitions for each metric.
+- Show empty states instead of fabricated live results.
+
+11. Settings and Preferences
+- Profile, target job titles, skills, countries, cities, work arrangements and salary preferences.
+- Default match threshold: 75/100, editable by the user.
+- Timezone default: Asia/Karachi, editable.
+- Global application cap: 30 per day across all regions, configurable with safe validation.
+- Regional CV assignment, notification preferences, privacy and account settings.
+- Clearly explain how changes affect job search.
+
+12. Automation Center
+- Job-search schedules, recent runs, queued actions, completed actions and failures.
+- Pause/resume automation and run a manual search.
+- Display the global daily quota and remaining capacity.
+- Prevent duplicate applications and duplicate email sends.
+- Include confirmation dialogs for consequential actions.
+- Show clear audit logs and error recovery guidance.
+
+## Shared navigation
+Use these sidebar items in this order:
+Overview, Discover Jobs, Matched Jobs, Applications, Email Templates, Resume Library, AI Assistant, Calendar, Analytics, Integrations, Automation and Settings.
+
+The top bar contains global search, breadcrumbs or page title where appropriate, notifications, help and a user profile menu.
+
+## Components
+Create reusable components with variants:
+- Primary, secondary, tertiary and destructive buttons.
+- Search fields, selects, date pickers, filter chips and segmented controls.
+- Job cards, match-score indicators, metric cards and progress bars.
+- Tables, status badges, tabs, pagination and empty states.
+- Modal dialogs, side drawers, tooltips, toast notifications and confirmation dialogs.
+- Sidebar navigation items with default, hover, active and disabled states.
+- Form fields with default, focus, error, disabled and success states.
+
+Use accessible contrast, visible keyboard focus, clear labels and consistent icon sizing. Do not rely on color alone to communicate status.
+
+## Prototype interactions
+Link all 12 screens using working prototype navigation. Implement:
+- Sidebar navigation and active states.
+- Global search and job-filter interactions.
+- Job card to job detail navigation.
+- Save job and change application status.
+- Resume upload entry point and regional assignment states.
+- Tabs, table/board toggles and date-range selection.
+- Modal open/close and confirmation flows.
+- Automation pause/resume state changes.
+- Notification menu and settings navigation.
+Use realistic demo data where backend integration is unavailable and label demo-only actions appropriately.
+
+## Responsive behavior
+Create desktop, tablet and mobile layouts. On tablet, collapse the sidebar. On mobile, use a compact top bar and navigation drawer, stack cards vertically, convert wide tables into readable cards, and keep primary actions accessible.
+
+## Quality requirements
+Use a consistent design system and reusable components instead of creating each page independently. Prioritize information hierarchy, alignment, whitespace, scannability and useful empty/loading/error states. Make the result look like a coherent SaaS product ready for engineering handoff, not a collection of unrelated mockups.
+
+Deliver a named page for each of the 12 screens, a design-system page with color and typography tokens, reusable components with variants, and a connected prototype flow.

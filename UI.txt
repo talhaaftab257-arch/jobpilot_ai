@@ -1,0 +1,695 @@
+# MASTER PROMPT: Build a Premium Global AI Job Hunting SaaS
+## Role: Senior Figma UI/UX Designer + SaaS Product Architect + Senior Frontend Engineer + AI Automation Engineer
+
+Act as a senior product designer, Figma-level UI/UX expert, senior full-stack engineer, and AI automation architect.
+
+I am building a GLOBAL AI JOB HUNTING SAAS that discovers relevant jobs worldwide, matches them with my CV, identifies legitimate hiring contacts, generates personalized application emails, manages applications, and automates approved workflows.
+
+Your task is to inspect my existing repository and build a polished, functional, responsive SaaS application.
+
+IMPORTANT:
+- Implement the actual project, not just a plan or design proposal.
+- Preserve existing working features, backend functionality, API contracts, and database integrations.
+- Inspect the repository before changing anything.
+- Use the uploaded dashboard screenshot as the primary visual reference.
+- Do not copy another company's logo or claim affiliation with another job platform.
+- Do not claim features are complete unless they have been implemented and tested.
+
+# 1. PRODUCT VISION
+
+Product name: JobPilot AI
+
+Product type: Global AI Job Hunting and Application Management SaaS.
+
+The product should feel like a premium productivity platform combined with a modern worldwide job marketplace.
+
+Core capabilities:
+1. Discover relevant job opportunities worldwide.
+2. Prioritize jobs based on my country and regional preferences.
+3. Score jobs against my CV and professional profile.
+4. Identify real, publicly documented recruiter or hiring contacts.
+5. Generate personalized application emails.
+6. Select the correct CV for the job's target region.
+7. Send approved and validated applications through Gmail.
+8. Track applications, replies, follow-ups, interviews, and failures.
+9. Provide an AI assistant for job-search queries and workflow control.
+10. Offer a beautiful dashboard for managing the entire process.
+
+# 2. MANDATORY DESIGN REFERENCE
+
+Use my uploaded dashboard screenshot as the primary visual inspiration.
+
+Recreate its overall design language:
+- A sophisticated, spacious SaaS dashboard.
+- A left-hand sidebar with profile and navigation.
+- A welcome header and prominent AI action buttons.
+- A responsive two-column arrangement of dashboard cards.
+- Task lists, project cards, progress indicators, calendar, and reminders.
+- White cards against a soft neutral background.
+- Thin borders, restrained shadows, rounded corners, and compact typography.
+- Professional icons and clear visual hierarchy.
+
+Adapt the screenshot to a job-hunting product rather than copying its task-management content literally.
+
+The result should feel like a professionally designed product from an experienced SaaS design team.
+
+# 3. COMPLETE COLOR SYSTEM: MEHROON + BLACK + WHITE
+
+Use this exact starting palette consistently throughout the application.
+
+Primary colors:
+- Primary mehroon: #641E32
+- Secondary mehroon: #87364F
+- Deep burgundy: #431321
+- Jet black: #171717
+- Main background: #F6F3F4
+- Card background: #FFFFFF
+- Main text: #202020
+- Secondary text: #737373
+- Borders: #E7E0E3
+- Subtle mehroon background: #F5E9ED
+
+Status colors:
+- Success: #16845B
+- Warning: #B7791F
+- Error: #C53030
+- Information: #3267A8
+
+Design rules:
+- Use a black sidebar with white labels and icons.
+- Highlight the active navigation item using a subtle mehroon background and clear text contrast.
+- Use white cards with subtle borders and soft shadows.
+- Use mehroon for primary buttons, active states, progress indicators, and selected elements.
+- Use deep burgundy sparingly for hover states and high-emphasis elements.
+- Use black for headings, text emphasis, and strong visual anchors.
+- Use a warm, very light gray background for the main content area.
+- Reserve green for success states and amber for warnings.
+- Do not use purple gradients, bright red as the main theme, neon effects, or excessive decorative colors.
+- Maintain accessible contrast for text, icons, controls, and button labels.
+
+Create shared design tokens and reusable styles. Do not scatter hardcoded colors across individual pages.
+
+# 4. FRONTEND TECHNOLOGY
+
+First inspect the existing repository and identify the current framework and dependencies.
+
+Preferred stack if the project does not already have an established stack:
+- React
+- Vite
+- TypeScript
+- Tailwind CSS or an existing compatible styling system
+- React Router
+- Lucide React icons
+- TanStack Query for API state when appropriate
+- React Hook Form and Zod for validated forms when useful
+- Recharts for analytics charts if needed
+
+Do not reinstall or replace working dependencies unnecessarily.
+
+Architecture requirements:
+- Reusable UI components.
+- Typed API service layer.
+- Centralized design tokens.
+- Separate pages, layouts, hooks, services, types, and utilities.
+- Environment-based configuration.
+- Clean error handling.
+- Maintainable code with minimal duplication.
+
+# 5. APPLICATION SHELL AND NAVIGATION
+
+Create a polished application shell.
+
+Sidebar:
+- Product logo and JobPilot AI name.
+- User profile and account menu.
+- Overview
+- Discover Jobs
+- Matched Jobs
+- Applications
+- Email Templates
+- Resume Library
+- AI Assistant
+- Calendar
+- Analytics
+- Integrations
+- Settings
+
+The sidebar should be collapsible on desktop and become a mobile navigation drawer on smaller screens.
+
+Header:
+- Current date.
+- Greeting: "Hello, [User Name]"
+- Main headline: "How can I help you find your next opportunity?"
+- Global search or command input.
+- Notifications.
+- User avatar and profile dropdown.
+
+Prominent actions:
+- Ask AI
+- Run Job Search
+- Review Matches
+- Manage Applications
+
+Add a clear automation status indicator:
+- Running
+- Paused
+- Needs Attention
+- Error
+
+Include a global pause/resume control that connects to the actual backend workflow when available.
+
+# 6. MAIN DASHBOARD
+
+Follow the screenshot's dashboard composition.
+
+Use a responsive two-column card grid with carefully aligned cards.
+
+## Left column
+
+### A. My Tasks
+Show:
+- Job searches currently running.
+- New matches waiting for review.
+- Applications ready to send.
+- Follow-ups due.
+- Failed actions requiring attention.
+
+Group tasks into:
+- In Progress
+- To Do
+- Upcoming
+
+Each task should have a status, priority, due date when applicable, and a meaningful action.
+
+### B. My Goals
+Show:
+- Jobs discovered.
+- Qualified matches.
+- Applications sent.
+- Follow-ups completed.
+- Resume/profile completion.
+
+Use progress bars and clearly labeled target values.
+
+## Right column
+
+### A. Job Search Projects
+Create configurable workspaces such as:
+- Pakistan Opportunities
+- Europe Careers
+- Asia Opportunities
+- Arab Region Opportunities
+- Global Remote Jobs
+
+These are configurable saved searches, not separate daily application quotas.
+
+### B. Application Calendar
+Show:
+- Interviews.
+- Recruiter calls.
+- Application deadlines.
+- Follow-up reminders.
+- Upcoming tasks.
+
+### C. Reminders
+Display:
+- Applications requiring follow-up.
+- Newly matched jobs awaiting review.
+- Failed workflows.
+- Missing regional resumes.
+- Upcoming interviews.
+
+All real counts must come from the backend. If using demo data, label it clearly and never mix it with real production activity.
+
+# 7. GLOBAL JOB DISCOVERY
+
+Build a professional job discovery experience for worldwide recruitment.
+
+Support these initial regional preferences:
+
+Priority 1 — Pakistan:
+- Pakistan, including available cities and remote opportunities.
+
+Priority 2 — Europe:
+- Germany
+- Netherlands
+- Ireland
+- United Kingdom
+- Sweden
+- France
+- Poland
+- Portugal
+- Switzerland
+
+Priority 3 — Asia:
+- Singapore
+- Malaysia
+- Japan
+- South Korea
+- Indonesia
+- Thailand
+- China
+
+Priority 4 — Arab countries:
+- United Arab Emirates
+- Saudi Arabia
+- Qatar
+- Oman
+- Bahrain
+- Kuwait
+- Jordan
+- Egypt
+
+Also allow users to add other supported countries, including the United States, Canada, Australia, and New Zealand.
+
+Users must be able to change priorities, enable or disable countries, and add saved searches through Settings.
+
+Search interface:
+- Job title and keywords.
+- Company.
+- Country and city.
+- Employment type.
+- Experience level.
+- Salary range and currency.
+- Remote, hybrid, or on-site.
+- Industry.
+- Publication date.
+- Minimum AI match score.
+
+Default freshness: postings published within the last 72 hours.
+
+Use actual publication timestamps when available. If the publication date is unknown, label it as unknown rather than treating discovery time as publication time.
+
+Display job cards with:
+- Job title.
+- Company.
+- Location.
+- Country.
+- Publication date.
+- Job source.
+- Salary when available.
+- Employment type.
+- Match score.
+- Saved/applied status.
+
+Provide a detailed job view with:
+- Job description.
+- Required skills.
+- Matching skills.
+- Missing skills.
+- Experience requirements.
+- Original job listing link.
+- Selected regional resume.
+- Application preparation actions.
+
+Do not invent jobs, employers, salaries, dates, recruiter identities, or source URLs.
+
+Respect the terms and technical restrictions of job platforms. Use official APIs, authorized integrations, permitted feeds, or other compliant sources. Do not bypass CAPTCHAs, authentication protections, or anti-bot controls.
+
+# 8. AI JOB MATCHING
+
+Create a transparent job-matching engine.
+
+Initial scoring weights:
+- Technical and professional skills: 30 points.
+- Job-title relevance: 25 points.
+- Experience requirements: 15 points.
+- Location and work arrangement: 10 points.
+- Salary preferences: 10 points.
+- Posting freshness: 10 points.
+
+Total: 100 points.
+
+Default minimum match score: 75/100.
+
+These weights should be configurable.
+
+Keep hard eligibility requirements separate from the score. A high score must not override a missing mandatory qualification, work authorization requirement, or other hard constraint.
+
+Display:
+- Overall match score.
+- Why the job matches.
+- Skills that match.
+- Missing or uncertain skills.
+- Experience alignment.
+- Location and salary alignment.
+- Source evidence.
+
+Never claim that a candidate has a skill, qualification, or experience unless it exists in the approved profile or resume.
+
+# 9. RESUME LIBRARY
+
+Build a polished Resume Library with four regional CV slots:
+- Pakistan CV
+- Europe CV
+- Asia CV
+- Arab-region CV
+
+Each resume card should show:
+- Region.
+- Filename.
+- Upload date.
+- File type.
+- Active or missing status.
+- Preview/download action when authorized.
+- Replace and remove actions.
+
+Mapping must be deterministic:
+- Pakistan job → Pakistan CV.
+- European job → Europe CV.
+- Asian job → Asia CV.
+- Arab-region job → Arab-region CV.
+
+If the correct CV is missing, stop the application and request manual action. Never silently substitute a different regional resume.
+
+Use private Supabase Storage or the project's existing private file-storage solution.
+
+Do not expose resumes through public URLs.
+
+Validate file type and size, enforce authorization, and prevent one user from accessing another user's resumes.
+
+# 10. APPLICATION MANAGEMENT
+
+Create a complete Applications page with table and board views.
+
+Statuses:
+- Discovered
+- Matched
+- Ready for Review
+- Queued
+- Sending
+- Sent
+- Submitted
+- Replied
+- Interview
+- Rejected
+- Failed
+- Needs Attention
+
+Include:
+- Company and job details.
+- Region and selected resume.
+- Application method.
+- Email or portal status.
+- Submission timestamp.
+- Activity timeline.
+- Retry action where safe.
+- Manual intervention indicator.
+- Original job link.
+- Filters and sorting.
+
+Email applications and website/portal applications must be tracked separately.
+
+A Gmail provider accepting an email means it was sent, not necessarily delivered. Do not mark an application as successfully submitted unless the relevant action has been confirmed.
+
+For browser-based applications, require authorized workflows and manual intervention for CAPTCHA, MFA, or unsupported steps.
+
+# 11. EMAIL TEMPLATES AND CONTACT VERIFICATION
+
+Create an Email Templates page featuring:
+- Editable subject.
+- Editable message body.
+- Live preview.
+- Regional templates.
+- Template variables.
+- Save and reset actions.
+- Test rendering.
+
+Potential variables:
+- Candidate name.
+- Company name.
+- Job title.
+- Relevant verified skills.
+- Job URL.
+- Verified recruiter name when available.
+
+Contact discovery must rely on legitimate, publicly available evidence or authorized sources.
+
+Never fabricate email addresses or infer an address and present it as verified.
+
+If a contact cannot be verified, mark it as unavailable and offer an alternative application route.
+
+Validate the recipient, job, CV mapping, template, and daily quota before any automated send.
+
+# 12. GMAIL AND OTHER INTEGRATIONS
+
+Create an Integrations page for:
+- Gmail.
+- Supabase.
+- Configured job sources.
+- AI model provider.
+- Optional calendar integration.
+
+Display actual integration states:
+- Connected
+- Not Connected
+- Needs Attention
+- Configuration Required
+
+Use OAuth 2.0 or the relevant official authorization flow.
+
+Never ask users to provide their email account password.
+
+Never display private tokens, API secrets, service-role keys, or database passwords in the frontend.
+
+If the backend integration is not implemented, show Configuration Required rather than a fake Connected status.
+
+# 13. EMAIL AUTOMATION AND DAILY QUOTA
+
+The default global daily application cap is 30 applications across all regions combined.
+
+Do not interpret this as 30 applications per country or region.
+
+Use Asia/Karachi as the default timezone.
+
+The user prefers automatic email sending, but only after all safety and validation requirements pass.
+
+Before sending, verify:
+- The job is not already applied to.
+- The recipient is supported by evidence.
+- The correct regional CV exists.
+- The email is personalized using approved facts.
+- The recipient and job URL are valid.
+- The daily quota is available.
+- The automation is not paused.
+- The application is not duplicated or already in progress.
+
+Implement:
+- Transactional quota reservation.
+- Idempotency keys.
+- Duplicate prevention.
+- Retry policies with backoff.
+- Provider response logging.
+- Reconciliation when an email request times out or has an uncertain result.
+- A global emergency stop.
+- Dry-run mode.
+- A full application event log.
+
+If the provider result is uncertain, reconcile the outcome before retrying. Do not risk sending duplicate emails.
+
+Do not claim delivery confirmation based solely on a successful API request.
+
+# 14. AI ASSISTANT
+
+Create an attractive AI assistant page with a conversational interface.
+
+Users should be able to ask:
+- Find AI Engineer jobs in Pakistan posted in the last 72 hours.
+- Show my best matching European opportunities.
+- Explain why this job matches my CV.
+- Draft an application email.
+- Show applications requiring follow-up.
+- Summarize today's discovery run.
+
+The assistant should use actual backend tools and data when available.
+
+Display:
+- Search progress.
+- Number of results.
+- Source links.
+- Match explanations.
+- Suggested next actions.
+
+Require appropriate confirmation before consequential actions, such as changing automation settings or triggering a batch send.
+
+Do not pretend that a task ran successfully if the backend did not execute it.
+
+# 15. ANALYTICS
+
+Build a clean analytics page showing:
+- Jobs discovered over time.
+- Matches by region.
+- Applications by status.
+- Application activity.
+- Reply and interview rates when reliable data exists.
+- Job source performance.
+- Failure and retry statistics.
+- Daily quota usage.
+
+Use accessible charts and clear date filters.
+
+Distinguish missing data from zero values. Do not fabricate conversion rates or interview statistics.
+
+# 16. SETTINGS
+
+Create settings sections for:
+- Personal profile.
+- Job titles and skills.
+- Country and region priorities.
+- Freshness window.
+- Minimum match score.
+- Daily application limit.
+- Regional resume mapping.
+- Email templates.
+- Gmail connection.
+- Notification preferences.
+- Timezone.
+- Dry-run mode.
+- Automation status.
+- Privacy and security.
+
+Defaults:
+- Posting freshness: 72 hours.
+- Minimum match score: 75/100.
+- Daily application cap: 30 globally.
+- Timezone: Asia/Karachi.
+- Automatic email mode: enabled only after explicit setup and validation.
+
+Settings must be persisted through the actual backend when available. Validate all user inputs and show save/error feedback.
+
+# 17. SUPABASE CONFIGURATION
+
+Inspect the existing project before changing Supabase configuration.
+
+If Supabase is already configured, preserve the working setup.
+
+If database configuration or schema is incomplete:
+1. Identify the exact missing configuration.
+2. Create a safe `.env.example` containing placeholders only.
+3. Add actual secrets only to the local ignored `.env` file.
+4. Update `.gitignore` to exclude secrets and private local files.
+5. Generate a complete SQL migration compatible with Supabase PostgreSQL.
+6. Provide the SQL file for execution in Supabase SQL Editor.
+7. Include seed data for configurable regions and countries.
+8. Include verification queries for tables, indexes, policies, and seed records.
+9. Document the exact setup steps.
+10. Keep application models and migrations synchronized.
+
+Do not claim the database has been configured until the required SQL has actually been executed and verified.
+
+Never ask me to paste database passwords, service-role keys, OAuth secrets, or private access tokens into ordinary chat.
+
+Use Supabase Auth for user identity when appropriate.
+
+Use Row Level Security and ownership checks for private user data. Do not create broad public policies for private resumes, applications, contacts, or credentials.
+
+Use a private Storage bucket for regional resumes and enforce appropriate ownership policies.
+
+Do not blindly execute destructive schema resets or migrations that could delete existing data.
+
+# 18. BACKEND AND DATABASE PRESERVATION
+
+Inspect the existing backend and reuse its architecture.
+
+If FastAPI is already used, preserve it and its API contracts.
+
+Separate:
+- Frontend presentation.
+- API client.
+- Backend business logic.
+- Job-source adapters.
+- AI matching and generation.
+- Email provider.
+- Scheduler and job queue.
+- Database models and migrations.
+
+Implement missing features incrementally and document dependencies.
+
+Do not create duplicate database tables or competing configuration systems without first checking the existing schema.
+
+# 19. SECURITY AND RELIABILITY
+
+Implement or preserve:
+- Authentication and authorization.
+- Secure handling of credentials.
+- Server-side validation.
+- Private resume storage.
+- User-level data isolation.
+- API rate limits where appropriate.
+- Structured logging.
+- Error handling.
+- Safe retries and idempotency.
+- Global automation pause.
+- Dry-run mode.
+- No secrets committed to Git.
+- No private tokens in browser logs.
+- No cross-user data access.
+
+Use approved APIs and compliant browser automation. Do not bypass security controls or site restrictions.
+
+# 20. IMPLEMENTATION PLAN
+
+Work in phases.
+
+Phase 1:
+- Inspect repository and current application.
+- Identify framework, existing pages, routes, API endpoints, database models, and design system.
+- Report the intended changes briefly.
+
+Phase 2:
+- Implement the global design tokens and application shell.
+- Create the mehroon/black/white theme.
+- Build the sidebar, header, and responsive dashboard layout.
+- Match the reference screenshot's visual style.
+
+Phase 3:
+- Complete Overview, Discover Jobs, Matched Jobs, and Job Details.
+- Implement functional filters and selection behavior.
+
+Phase 4:
+- Complete Applications, Resume Library, Email Templates, Calendar, Analytics, and Settings.
+
+Phase 5:
+- Integrate existing backend APIs, Supabase, Gmail, and job-source adapters where available.
+- Clearly identify any missing integration or required configuration.
+
+Phase 6:
+- Test the application.
+- Fix frontend build errors, type errors, broken routes, and responsive layout issues.
+- Document remaining work.
+
+Do not stop after generating the plan. Continue implementing actual code.
+
+# 21. TESTING AND ACCEPTANCE CRITERIA
+
+Before declaring completion:
+- Run the frontend build.
+- Run type checking and linting if available.
+- Test every route.
+- Test search, filters, sorting, forms, and buttons.
+- Test loading, empty, error, and success states.
+- Check desktop, tablet, and mobile layouts.
+- Check text contrast and keyboard accessibility.
+- Confirm that no secrets are exposed.
+- Verify that demo data is clearly separated from production data.
+- Confirm that existing backend integrations remain functional.
+- Do not claim a test passed if it was not executed.
+
+# 22. REQUIRED DELIVERABLES
+
+At the end, provide:
+1. A summary of the completed design and functionality.
+2. The list of files created or modified.
+3. The final frontend architecture.
+4. Required environment variables using placeholders only.
+5. SQL migration and Supabase setup instructions if needed.
+6. Commands to run the application locally.
+7. Actual build and test results.
+8. Features connected to real backend services.
+9. Features still using mock data.
+10. Remaining tasks or external configuration required.
+
+START NOW:
+Inspect the existing repository, identify the current implementation, and begin making the actual changes.
+
+Prioritize a visually excellent, responsive dashboard using the reference screenshot and the Mehroon + Black + White theme. Preserve existing functionality and build a coherent global job-hunting product rather than a collection of disconnected mockup pages.
